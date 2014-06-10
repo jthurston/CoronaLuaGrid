@@ -6,10 +6,7 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-print ("Hello World!")
-
 display.setStatusBar( display.HiddenStatusBar )
-
 
 local myWidth = display.contentWidth
 local myHeight= display.contentHeight
@@ -17,12 +14,15 @@ local myHeight= display.contentHeight
 local myTextObject = display.newText( "Hello World!", myWidth/2, myHeight/2, "Arial", 60 )
 myTextObject:setTextColor( 1, 1, 1 )
 
-
-for i = 1, 100 do
-    local newRectangle = display.newRect( math.random(myWidth),
-    math.random(myHeight), 10 + math.random(200), 10 + math.random(200) )
-    newRectangle:setFillColor( math.random(), math.random(), math.random() )
+function drawRectangles()
+    for i = 1, 100 do
+        local newRectangle = display.newRect( math.random(myWidth),
+            math.random(myHeight), 10 + math.random(200), 10 + math.random(200) )
+        newRectangle:setFillColor( math.random(), math.random(), math.random() )
+    end
 end
+
+drawRectangles()
 
 function screenTap()
     local r = math.random( 0, 100 )
