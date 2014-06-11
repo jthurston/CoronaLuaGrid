@@ -68,10 +68,14 @@ function screenTap()
     myTextObject:setFillColor( r/100, g/100, b/100 )
 end
 
-local topLeft = display.newText("0:0", 40, 20, nil, smallFontSize)
-local topRight = display.newText(myWidth.. ":0", myWidth-60, 20, nil, smallFontSize)
-local bottomLeft = display.newText("0:" .. myHeight, 75, myHeight-20, nil, smallFontSize)
+local topLeft = display.newText("0:0", 50, 20, nil, smallFontSize)
+
+local topRight = display.newText(myWidth.. ":0", myWidth - 75, 20, nil, smallFontSize)
+
+local bottomLeft = display.newText("0:" .. myHeight, 80, myHeight-20, nil, smallFontSize)
+
 local bottomRight = display.newText(myWidth ..":".. myHeight, myWidth-100, myHeight-20, nil, smallFontSize)
+
 local middleCenter = display.newText(myWidth/2 ..":".. myHeight/2, myWidth/2, myHeight/2, nil, smallFontSize)
 
 local group = display.newGroup()
