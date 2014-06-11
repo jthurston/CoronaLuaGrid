@@ -11,7 +11,22 @@ display.setStatusBar( display.HiddenStatusBar )
 local myWidth = display.contentWidth
 local myHeight= display.contentHeight
 
-local myTextObject = display.newText( "Hello World!", myWidth/2, myHeight/2, "Arial", 60 )
+if myWidth <= 320 then bigFontsize=50 end
+
+if (myWidth <= 640 and myWidth >320)
+    then bigFontsize=75
+end
+
+if (myWidth <= 800 and myWidth >640)
+    then bigFontsize=125
+end
+
+if (myWidth <= 1536 and myWidth >800)
+    then bigFontsize=175
+end
+
+
+local myTextObject = display.newText( "Grid Helper", myWidth/2, myHeight/2 - 150, "Arial", bigFontsize)
 myTextObject:setTextColor( 1, 1, 1 )
 
 function drawRectangles()
@@ -22,7 +37,23 @@ function drawRectangles()
     end
 end
 
-drawRectangles()
+function drawBackground()
+    local newRectangle1 = display.newRect(1, 1, myWidth, myHeight)
+    newRectangle1:setFillColor(.5,0,0)
+
+    local newRectangle2 = display.newRect(1, myHeight, myWidth, myHeight)
+    newRectangle2:setFillColor(0,.5,0)
+
+    local newRectangle3 = display.newRect(myWidth, 1, myWidth, myHeight)
+    newRectangle3:setFillColor(0,.5,1)
+
+    local newRectangle4 = display.newRect(myWidth, myHeight, myWidth, myHeight)
+    newRectangle4:setFillColor(.5,0,.5)
+
+end
+
+--drawRectangles()
+drawBackground()
 
 function screenTap()
     local r = math.random( 0, 100 )
@@ -31,16 +62,22 @@ function screenTap()
     myTextObject:setFillColor( r/100, g/100, b/100 )
 end
 
-local topLeft = display.newText("0:0", 25, 10, nil, 24)
-local topRight = display.newText(myWidth.. ":0", myWidth-40, 10, nil, 24)
-local bottomLeft = display.newText("0:" .. myHeight, 45, myHeight-10, nil, 24)
-local bottomRight = display.newText(myWidth ..":".. myHeight, myWidth-60, myHeight-10, nil, 24)
+local topLeft = display.newText("0:0", 40, 20, nil, 50)
+
+local topRight = display.newText(myWidth.. ":0", myWidth-60, 20, nil, 40)
+topRight.width = myWidth
+topRight.align = "center"
+
+local bottomLeft = display.newText("0:" .. myHeight, 75, myHeight-20, nil, 40)
+local bottomRight = display.newText(myWidth ..":".. myHeight, myWidth-100, myHeight-20, nil, 40)
+local middleCenter = display.newText(myWidth/2 ..":".. myHeight/2, myWidth/2, myHeight/2, nil, 40)
 
 local group = display.newGroup()
 group:insert( topLeft )
 group:insert( topRight )
 group:insert( bottomLeft )
 group:insert( bottomRight )
+group:insert( middleCenter )
 
 group.isVisible = true
 
