@@ -11,22 +11,28 @@ display.setStatusBar( display.HiddenStatusBar )
 local myWidth = display.contentWidth
 local myHeight= display.contentHeight
 
-if myWidth <= 320 then bigFontsize=50 end
+if myWidth <= 320
+    then bigFontSize=50
+    smallFontSize = 20
+end
 
 if (myWidth <= 640 and myWidth >320)
-    then bigFontsize=75
+    then bigFontSize=75
+    smallFontSize = 40
 end
 
 if (myWidth <= 800 and myWidth >640)
-    then bigFontsize=125
+    then bigFontSize=125
+    smallFontSize = 40
 end
 
 if (myWidth <= 1536 and myWidth >800)
-    then bigFontsize=175
+    then bigFontSize=175
+    smallFontSize = 40
 end
 
 
-local myTextObject = display.newText( "Grid Helper", myWidth/2, myHeight/2 - 150, "Arial", bigFontsize)
+local myTextObject = display.newText( "Grid Helper", myWidth/2, myHeight/2 - 150, "Arial", bigFontSize)
 myTextObject:setTextColor( 1, 1, 1 )
 
 function drawRectangles()
@@ -62,15 +68,11 @@ function screenTap()
     myTextObject:setFillColor( r/100, g/100, b/100 )
 end
 
-local topLeft = display.newText("0:0", 40, 20, nil, 50)
-
-local topRight = display.newText(myWidth.. ":0", myWidth-60, 20, nil, 40)
-topRight.width = myWidth
-topRight.align = "center"
-
-local bottomLeft = display.newText("0:" .. myHeight, 75, myHeight-20, nil, 40)
-local bottomRight = display.newText(myWidth ..":".. myHeight, myWidth-100, myHeight-20, nil, 40)
-local middleCenter = display.newText(myWidth/2 ..":".. myHeight/2, myWidth/2, myHeight/2, nil, 40)
+local topLeft = display.newText("0:0", 40, 20, nil, smallFontSize)
+local topRight = display.newText(myWidth.. ":0", myWidth-60, 20, nil, smallFontSize)
+local bottomLeft = display.newText("0:" .. myHeight, 75, myHeight-20, nil, smallFontSize)
+local bottomRight = display.newText(myWidth ..":".. myHeight, myWidth-100, myHeight-20, nil, smallFontSize)
+local middleCenter = display.newText(myWidth/2 ..":".. myHeight/2, myWidth/2, myHeight/2, nil, smallFontSize)
 
 local group = display.newGroup()
 group:insert( topLeft )
